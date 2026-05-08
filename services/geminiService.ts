@@ -3,7 +3,9 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { ScriptParams, ScriptResult } from "../types";
 
 export const generateScript = async (params: ScriptParams): Promise<ScriptResult> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+ const ai = new GoogleGenAI({
+  apiKey: import.meta.env.VITE_GEMINI_API_KEY
+});
   
   const prompt = `
     Você é um estrategista sênior de conteúdo audiovisual para YouTube.
@@ -30,7 +32,7 @@ export const generateScript = async (params: ScriptParams): Promise<ScriptResult
   `;
 
   const response = await ai.models.generateContent({
-    model: "gemini-3-pro-preview",
+   model: "gemini-2.5-flash",,
     contents: prompt,
     config: {
       responseMimeType: "application/json",
