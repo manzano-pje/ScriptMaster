@@ -32,7 +32,7 @@ export const generateScript = async (params: ScriptParams): Promise<ScriptResult
   `;
 
   const response = await ai.models.generateContent({
-   model: "gemini-2.5-flash",,
+   model: "gemini-2.5-flash",
     contents: prompt,
     config: {
       responseMimeType: "application/json",
